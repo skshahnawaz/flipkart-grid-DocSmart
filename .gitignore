@@ -3,3 +3,6 @@ credentials/
 test.pdf
 
 .DS_Store
+
+#for virtualenv python
+venv/ 
