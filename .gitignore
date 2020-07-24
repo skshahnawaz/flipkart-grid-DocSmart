@@ -6,3 +6,5 @@ test.pdf
 
 #for virtualenv python
 venv/ 
+
+__pycache__
