@@ -1,4 +1,5 @@
 from google.cloud import storage
+from flask import render_template
 
 ### Download test ###
 
@@ -24,5 +25,4 @@ def uploadFile(bucket_name: str='code2xl_bucket', source_file: str='test.pdf'):
         source_file.read(),
         content_type=source_file.content_type
     )
-
-    return f'File {source_file.filename} uploaded to {destination_blob_name}'
+    return render_template('upload.html', filename=source_file.filename, destination=destination_blob_name)
