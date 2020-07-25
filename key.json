@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "prefab-sky-282212",
+  "private_key_id": "9808934c89dd4f1c87f791ea800d7c366adf5689",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEuwIBADANBgkqhkiG9w0BAQEFAASCBKUwggShAgEAAoIBAQCtC2FvvrVNV3xZ\nKZBCZYmY1OiLmePtVRVzTrWDyEH3o1/8BDIT01fZaRLNkFjAzbeOgNz/tF+nXMTB\nY5bn6QV8ltxdBbBg0NirlY87wOh0zbbO+9UXxjsctw3yWp66296juvr0vmQedoJD\nWrhF9vCMnmbn88M21+4uJbY1DXpvSNjGIjygjatz0j1FYwH8SrD2BL3TYwSWNBcY\n9j3NwL65t4AcM6sVG4Aa3XR0bfcF3/unf6qC5VDESDn+/k3wuK+6/pAb61yHFi82\nxxJBeC/vOJtwY+47OtsEUqH/U3WIFSxsA9ePf2N/j8nE/Oxv/h25AReR/2AVo5Ey\nIdc0x6ArAgMBAAECggEAD5LVdz3wdDWk784BToXJNJN+GvOZI0bD3PJJp21nnna6\nJeS8xbMAwNongo+fT+QpGm6iNR3Rzq6sgy5y1OFQXe5NMSQDboXX54KuIYsS1fxI\n8RI8vdyDJ7+ZG5AooUQ2IoHVTHSGxIUW481E21XGQBQ7dQb9BoZiyGLFe2XV+IYt\nvQ++b4IcnAiZyWS4ghKebe1bPQPvQ0xfuIzQ6F4vlekSAPS+enF4EVJprzg5IxO/\nusE6/VSmih1Oi0NQbMffDCXAFbCdYcA4Fasu2+dMkSTJGFpLd5IF0+hvSIkiBsEr\nR6Y9wSvCJNjeBP6ekb/UE4SxYOBm9hc8GRTv6djSJQKBgQDeFG0YZWGMWJ/o1NaN\npd4hE+IDqQwMAPG3q30PyU7WSITa55VUp5nHOkXPXFH5N3VCnszwwo8oGaUQqJxw\n6iftfxlwzXvSP9X7if69uC33RKT17uZ4SO6Rz3D30+XKpviUMI31OThhL+x4Bkc8\nVX2X8+FuY+VMHobSRc+3J0hGBQKBgQDHeZ3mMIsw/USjrg0DGZ4knCvr6UGVM3c1\nTtnIbIWk353IbRq6JV9pUEqpXvKTkEwWo+rZlcJRfYa5tVNyAN++6a0bgt2Qf4Ec\nhi2aehs7NxKMJSHyBydaqjm26sLWKiEZkUv/MmHcrQMyH9j41rXjIx+i63VXKxuy\nJ/K9SIt0bwJ/Xo5T5Q9FeXxCmeAFekolSfAtS2Guv22nfYyGszIDXzmBV7NC4ch6\nsVkeYCvuuy3hv3vdxqUQTwKcRXuFII6ScYysSFs1XU/QzEj1LdI9wAp6MjyF5LEo\n4uxwLRULwj1VmcMSrlauqrK8/F2v9wBveUNduKLP/pkAzobq6hDPtQKBgQCXbJUW\n5wbi24A9mKS8E7hfJkaZQWrNrlHyH7dnVCpnrHEEcv51DGXPdmoXBMK0jjeUgD6J\nigwG/HlHhISh6FPxg0Yruj4jsQb79kesGsGNRBNKW+3W4uNXCh3h43igRz71P70n\nLsHnWVcxt8dnruZIVKNxc7iRwWG27mhwlB949QKBgDq63vejYR8NPXCFEGVeS5LA\n8EXcE7nfmxCcJhx3N3h1PzRU6O03WCEjqmODQDxgK5k8I14kHzIsa1NueYn14p66\nrscUVtq9iErvExnONzJjHgovIijJApyEZIdM+neuEA5yRoY3uQd9WvX+5qpOe3qk\nW/OjjGBgiX8jXAP8kIB2\n-----END PRIVATE KEY-----\n",
+  "client_email": "myserviceaccount@prefab-sky-282212.iam.gserviceaccount.com",
+  "client_id": "114151987975277548482",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/myserviceaccount%40prefab-sky-282212.iam.gserviceaccount.com"
+}
