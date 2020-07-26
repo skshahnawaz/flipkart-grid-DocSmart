@@ -1,5 +1,7 @@
 from google.cloud import storage
 from flask import render_template
+import requests
+import json
 
 ### Download test ###
 
@@ -25,4 +27,11 @@ def uploadFile(bucket_name: str='code2xl_bucket', source_file: str='test.pdf'):
         source_file.read(),
         content_type=source_file.content_type
     )
-    return render_template('upload.html', filename=source_file.filename, destination=destination_blob_name)
+
+    data = {'invoicePath': 'code2xl_bucket/Upload-Testing/Invoice.pdf'}
+    url = 'https://us-central1-shopsafe-ju.cloudfunctions.net/api/extract'
+
+    x = requests.post(url, data)
+    x = json.loads(x.text)
+    # return render_template('upload.html', filename=source_file.filename, destination=destination_blob_name)
+    return json.dumps(x, indent=4, sort_keys=True)
