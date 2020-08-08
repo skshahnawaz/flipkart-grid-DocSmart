@@ -1,0 +1,31 @@
+{
+  "name": "cloud",
+  "version": "1.0.0",
+  "description": "Flipkart Grid Cloud Processing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skshahnawaz/flipkart-grid.git"
+  },
+  "keywords": [
+    "flipkart"
+  ],
+  "author": "Sk Shahnawaz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skshahnawaz/flipkart-grid/issues"
+  },
+  "homepage": "https://github.com/skshahnawaz/flipkart-grid#readme",
+  "dependencies": {
+    "@google-cloud/automl": "^2.2.0",
+    "@google-cloud/language": "^4.1.0",
+    "axios": "^0.19.2",
+    "json-write": "^1.0.0",
+    "jsonfile": "^6.0.1",
+    "parse-json": "^5.0.1",
+    "sleep": "^6.3.0"
+  }
+}
