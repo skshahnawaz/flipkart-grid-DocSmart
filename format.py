@@ -21,8 +21,8 @@ data = json.load(f)
 wb = xl.load_workbook(template)
 ws = wb.active
 sheet = wb[wb.sheetnames[0]]
-items = []
-i=0
+# items = []
+# i=0
 
 border = Border(left=Side(border_style='thin', color='000000'),
                 right=Side(border_style='thin', color='000000'),
@@ -73,6 +73,23 @@ for i, item in enumerate(items):
     cess_percent = sheet['m'+n]
     tcs_percent = sheet['n'+n]
     total_amount = sheet['o'+n]
+
+    title.value = item_name[i]
+    quantity.value = item_quantity[i]
+    total_amount.value = item_amount[i]
+
+    if len(item_hsn):
+        hsn.value = item_hsn[i]
+    if len(item_igst_percent):
+        igst_percent.value = item_igst_percent[i]
+    if len(item_cgst_percent):
+        cgst_percent.value = ctem_igst_percent[i]
+    if len(item_sgst_percent):
+        sgst_percent.value = stem_igst_percent[i]
+    if len(item_discount_percent):
+        discount_percent.value = item_discount_percent[i]
+    if len(item_rate):
+        unit_price.value = item_rate[i]
 
     for cell in sheet[n]:
         cell.border = border
