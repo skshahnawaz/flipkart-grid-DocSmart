@@ -10,13 +10,14 @@ const obj = {
     document: {
       input_config: {
         gcs_source: {
-          input_uris: "gs://flipkart-grid/1.pdf",
+          input_uris: process.argv.slice(2)[0],
         },
       },
     },
   },
 };
 
+// console.log();
 // create request.json
 jsonfile
   .writeFile(file, obj)
@@ -43,50 +44,44 @@ function ocr() {
 
   exec(
     "gcloud auth activate-service-account myserviceaccount@prefab-sky-282212.iam.gserviceaccount.com --key-file=key.json --project=prefab-sky-282212",
-    (error, stdout, stderror) => {
-      //   if (error) {
-      //     console.log("error : ", error.message);
-      //     return;
-      //   }
-      //   if (stderror) {
-      //     console.log("stderror : ", stderror);
-      //     return;
-      //   }
-    }
+    (error, stdout, stderror) => {}
   );
 
   let prediction = {};
   exec(
     'curl -X POST \
-    -H "Authorization: Bearer $(gcloud auth application-default print-access-token)" \
-    -H "Content-Type: application/json" \
-    https://automl.googleapis.com/v1/projects/570686818487/locations/us-central1/models/TEN1878601377962262528:predict \
-    -d @request.json',
+  -H "Authorization: Bearer $(gcloud auth application-default print-access-token)" \
+  -H "Content-Type: application/json" \
+  https://automl.googleapis.com/v1/projects/570686818487/locations/us-central1/models/TEN3772716864992444416:predict \
+  -d @request.json',
     (error, stdout, stderror) => {
-      // if (error) {
-      //   console.log("error : ", error.message);
-      //   return;
-      // }
-      // if (stderror) {
-      //   console.log("stderror : ", stderror);
-      //   return;
-      // }
+      let single = [
+        "seller_name",
+        "seller_address",
+        "buyer_name",
+        "seller_gstin",
+        "invoice_number",
+        "invoice_date",
+      ];
       const json = stdout;
       const parsed = parseJson(json).payload;
+      // console.log(stdout);
       parsed.forEach((entity) => {
-        //   prediction.push({
-
-        // });
-        prediction[entity.displayName] =
-          entity.textExtraction.textSegment.content;
-        // console.log(prediction);
-        // console.log(entity.displayName);
-        // console.log(entity.textExtraction.textSegment.content);
+        if (prediction[entity.displayName] == undefined) {
+          prediction[entity.displayName] =
+            entity.textExtraction.textSegment.content;
+        } else {
+          if (single.includes(entity.displayName) == false) {
+            prediction[entity.displayName] =
+              prediction[entity.displayName] +
+              "#%#" +
+              entity.textExtraction.textSegment.content;
+          }
+        }
       });
       jsonfile
         .writeFile(file2, prediction)
         .then((res) => {
-          // console.log("Done");
           // insert into excel
           exec("python3 format.py", (err, stdout, stderror) => {
             if (error) {
@@ -98,7 +93,6 @@ function ocr() {
               return;
             }
             console.log(stdout);
-            // console.log("Done");
           });
         })
         .catch((error) => console.error(error));

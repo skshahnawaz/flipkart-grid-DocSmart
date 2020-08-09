@@ -50,6 +50,12 @@ items_quantity = sheet['m12']
 buyer_gstin = sheet['m13']
 shipping_address = sheet['m14']
 
+seller_name.value = data["seller_name"]
+seller_address.value = data["seller_address"]
+seller_gstin.value = data["seller_gstin"]
+invoice_number = data["invoice_number"]
+invoice_date = data["invoice_date"]
+
 for i, item in enumerate(items):
     n = str(i+18)
     sheet['a'+n].value = i+1
