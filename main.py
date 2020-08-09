@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_file
 from uploadDownloadHandler import uploadFile, downloadFile
 import os
 from dotenv import load_dotenv
@@ -12,6 +12,11 @@ bucket = os.environ['CLOUD_STORAGE_BUCKET']
 @app.route('/')
 def home():
     return render_template('home.html')
+
+@app.route('/download')
+def downloadFile():
+    path = "output.xlsx"
+    return send_file(path, as_attachment=True, mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml')
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
