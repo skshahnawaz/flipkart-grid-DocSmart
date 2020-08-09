@@ -9,7 +9,7 @@ import sys
 
 json_file = 'predicted.json'
 template = 'template.xlsx'
-save_file = 'output'+str(int(time.time()))+'.xlsx'
+save_file = 'output.xlsx'
 
 f = open(json_file)
 data = json.load(f)
@@ -21,8 +21,8 @@ data = json.load(f)
 wb = xl.load_workbook(template)
 ws = wb.active
 sheet = wb[wb.sheetnames[0]]
-items = []
-i=0
+# items = []
+# i=0
 
 border = Border(left=Side(border_style='thin', color='000000'),
                 right=Side(border_style='thin', color='000000'),
@@ -53,10 +53,57 @@ shipping_address = sheet['m14']
 seller_name.value = data["seller_name"]
 seller_address.value = data["seller_address"]
 seller_gstin.value = data["seller_gstin"]
-invoice_number = data["invoice_number"]
-invoice_date = data["invoice_date"]
+invoice_number.value = data["invoice_number"]
+invoice_date.value = data["invoice_date"]
+total_invoice_amount.value = data["net_total"]
 
-for i, item in enumerate(items):
+if "due_date" in data:
+    due_date.value = data["due_date"]
+else:
+    due_date.value = data["invoice_date"]
+
+if "seller_country" in data:
+    seller_country.value = data["seller_country"]
+else:
+    seller_country.value = "India"
+
+if "currency" in data:
+    currency.value = data["currency"]
+else:
+    currency.value = "INR"
+
+item_name = data["item_name"].split("#%#")
+item_amount = data["item_amount"].split("#%#")
+
+for i,s in enumerate(item_name):
+    item_name[i]=s.replace("\n", " ")
+
+item_igst_percent = []
+item_cgst_percent = []
+item_sgst_percent = []
+item_hsn = []
+item_rate = []
+item_discount_percent = []
+
+if "item_igst_percent" in data:
+    item_igst_percent = data["item_igst_percent"].split("#%#")
+if "item_cgst_percent" in data:
+    item_cgst_percent = data["item_cgst_percent"].split("#%#")
+if "item_sgst_percent" in data:
+    item_sgst_percent = data["item_sgst_percent"].split("#%#")
+if "item_hsn" in data:
+    item_hsn = data["item_hsn"].split("#%#")
+if "item_quantity" in data:
+    item_quantity = data["item_quantity"].split("#%#")
+else:
+    item_quantity = [1]*len(item_name)
+if "item_rate" in data:
+    item_rate = data["item_rate"].split("#%#")
+if "item_discount_percent" in data:
+    item_discount_percent = data["item_discount_percent"].split("#%#")
+
+
+for i, item in enumerate(item_name):
     n = str(i+18)
     sheet['a'+n].value = i+1
     product_id = sheet['b'+n]

@@ -36,5 +36,6 @@ def uploadFile(bucket_name, source_file):
 
     # x = requests.post(url, data)
     # x = json.loads(x.text)
-    # return render_template('upload.html', filename=source_file.filename, destination=destination_blob_name)
-    return json.dumps(x, indent=4, sort_keys=True)
+    return render_template('upload.html', filename=source_file.filename, destination=destination_blob_name)
+    # return json.dumps(x, indent=4, sort_keys=True)
+
