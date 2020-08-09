@@ -21,8 +21,8 @@ data = json.load(f)
 wb = xl.load_workbook(template)
 ws = wb.active
 sheet = wb[wb.sheetnames[0]]
-# items = []
-# i=0
+items = []
+i=0
 
 border = Border(left=Side(border_style='thin', color='000000'),
                 right=Side(border_style='thin', color='000000'),

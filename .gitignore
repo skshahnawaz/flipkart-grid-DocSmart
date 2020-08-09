@@ -1,6 +1,7 @@
 node_modules
 credentials/
 test.pdf
+*.xlsx
 
 .DS_Store
 
