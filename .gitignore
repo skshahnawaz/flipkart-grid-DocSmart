@@ -8,3 +8,6 @@ test.pdf
 venv/ 
 
 __pycache__
+
+.env
+key.json
