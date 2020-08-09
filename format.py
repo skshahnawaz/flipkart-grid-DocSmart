@@ -21,8 +21,8 @@ data = json.load(f)
 wb = xl.load_workbook(template)
 ws = wb.active
 sheet = wb[wb.sheetnames[0]]
-items = []
-i=0
+# items = []
+# i=0
 
 border = Border(left=Side(border_style='thin', color='000000'),
                 right=Side(border_style='thin', color='000000'),
@@ -50,7 +50,60 @@ items_quantity = sheet['m12']
 buyer_gstin = sheet['m13']
 shipping_address = sheet['m14']
 
-for i, item in enumerate(items):
+seller_name.value = data["seller_name"]
+seller_address.value = data["seller_address"]
+seller_gstin.value = data["seller_gstin"]
+invoice_number.value = data["invoice_number"]
+invoice_date.value = data["invoice_date"]
+total_invoice_amount.value = data["net_total"]
+
+if "due_date" in data:
+    due_date.value = data["due_date"]
+else:
+    due_date.value = data["invoice_date"]
+
+if "seller_country" in data:
+    seller_country.value = data["seller_country"]
+else:
+    seller_country.value = "India"
+
+if "currency" in data:
+    currency.value = data["currency"]
+else:
+    currency.value = "INR"
+
+item_name = data["item_name"].split("#%#")
+item_amount = data["item_amount"].split("#%#")
+
+for i,s in enumerate(item_name):
+    item_name[i]=s.replace("\n", " ")
+
+item_igst_percent = []
+item_cgst_percent = []
+item_sgst_percent = []
+item_hsn = []
+item_rate = []
+item_discount_percent = []
+
+if "item_igst_percent" in data:
+    item_igst_percent = data["item_igst_percent"].split("#%#")
+if "item_cgst_percent" in data:
+    item_cgst_percent = data["item_cgst_percent"].split("#%#")
+if "item_sgst_percent" in data:
+    item_sgst_percent = data["item_sgst_percent"].split("#%#")
+if "item_hsn" in data:
+    item_hsn = data["item_hsn"].split("#%#")
+if "item_quantity" in data:
+    item_quantity = data["item_quantity"].split("#%#")
+else:
+    item_quantity = [1]*len(item_name)
+if "item_rate" in data:
+    item_rate = data["item_rate"].split("#%#")
+if "item_discount_percent" in data:
+    item_discount_percent = data["item_discount_percent"].split("#%#")
+
+
+for i, item in enumerate(item_name):
     n = str(i+18)
     sheet['a'+n].value = i+1
     product_id = sheet['b'+n]
@@ -67,6 +120,23 @@ for i, item in enumerate(items):
     cess_percent = sheet['m'+n]
     tcs_percent = sheet['n'+n]
     total_amount = sheet['o'+n]
+
+    title.value = item_name[i]
+    quantity.value = item_quantity[i]
+    total_amount.value = item_amount[i]
+
+    if len(item_hsn):
+        hsn.value = item_hsn[i]
+    if len(item_igst_percent):
+        igst_percent.value = item_igst_percent[i]
+    if len(item_cgst_percent):
+        cgst_percent.value = ctem_igst_percent[i]
+    if len(item_sgst_percent):
+        sgst_percent.value = stem_igst_percent[i]
+    if len(item_discount_percent):
+        discount_percent.value = item_discount_percent[i]
+    if len(item_rate):
+        unit_price.value = item_rate[i]
 
     for cell in sheet[n]:
         cell.border = border

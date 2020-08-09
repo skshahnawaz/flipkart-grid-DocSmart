@@ -14,7 +14,9 @@ Automation for Invoice Processing using Google AutoML
 ## General Info
 
 Team Name : Code2XL
+
 Members: [SK Shahnawaz](https://github.com/skshahnawaz), [Rahul Shaikh](https://github.com/Rahul-Shaikh), [Swadesh Jana](https://github.com/Swadesh13)
+
 Institute Name: Jadavpur University
 
 ## Problem Statement
@@ -52,31 +54,29 @@ We are using a 10 GB (free-tier) auto-scalable Cloud Storage Bucket to store the
 
 ## Usage
 
-###### Clone
+#### Clone
 >Clone this repository:
 ```
 $ git clone https://github.com/skshahnawaz/flipkart-grid.git
 ```
 
-###### Prerequisities
-#
+#### Prerequisities
 * Install Python 3.8 from [here](https://www.python.org/downloads/)
 * Install node 12.18.* (including npm 6.14.*) from here [here](https://nodejs.org/en/download/)
 
-###### Dependencies
+#### Dependencies
 >Install all dependencies
 ```
 $ pip3 install -r requirements.txt
 $ npm i
 ```
 
-###### Usage
+#### Usage
 ```
 $ node predict_now.js
 ```
 
 ## How to Contribute
----
 
 1. Clone repo and create a new branch: `$ git checkout https://github.com/skshahnawaz/flipkart-grid.git -b name_for_new_branch`.
 2. Make changes and test
