@@ -2,6 +2,7 @@ from google.cloud import storage
 from flask import render_template
 import requests
 import json
+import os
 
 ### Download test ###
 
@@ -16,10 +17,10 @@ def downloadFile(bucket_name: str='code2xl_bucket', source_blob_name: str='Invoi
 
 
 ### Upload test ###
-def uploadFile(bucket_name: str='code2xl_bucket', source_file: str='test.pdf'):
+def uploadFile(bucket_name, source_file):
     client = storage.Client()
     bucket = client.get_bucket(bucket_name)
-    destination_blob_name = 'Uploading-Testing/'+source_file.filename
+    destination_blob_name = source_file.filename
     blob = bucket.blob(destination_blob_name)
 
     # blob.upload_from_filename(source_file_name)
@@ -28,10 +29,12 @@ def uploadFile(bucket_name: str='code2xl_bucket', source_file: str='test.pdf'):
         content_type=source_file.content_type
     )
 
-    data = {'invoicePath': 'code2xl_bucket/Upload-Testing/Invoice.pdf'}
-    url = 'https://us-central1-shopsafe-ju.cloudfunctions.net/api/extract'
+    os.system('node predict_now.js gs://flipkart-grid/'+source_file.filename)
 
-    x = requests.post(url, data)
-    x = json.loads(x.text)
+    # data = {'invoicePath': 'code2xl_bucket/Upload-Testing/Invoice.pdf'}
+    # url = 'https://us-central1-shopsafe-ju.cloudfunctions.net/api/extract'
+
+    # x = requests.post(url, data)
+    # x = json.loads(x.text)
     # return render_template('upload.html', filename=source_file.filename, destination=destination_blob_name)
     return json.dumps(x, indent=4, sort_keys=True)
