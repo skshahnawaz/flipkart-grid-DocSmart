@@ -9,7 +9,8 @@ Automation for Invoice Processing using Google AutoML
 * [Specifications](#specifications)
 * [Architecture](#architecture)
 * [Limitations](#limitations)
-* [Installation](#installation)
+* [Usage](#Usage)
+* [How to Contribute](#how-to-contribute)
 
 ## General Info
 
@@ -71,7 +72,7 @@ $ pip3 install -r requirements.txt
 $ npm i
 ```
 
-#### Usage
+#### Run (from terminal or cmd)
 ```
 $ node predict_now.js
 ```

@@ -14,15 +14,9 @@ save_file = 'output.xlsx'
 f = open(json_file)
 data = json.load(f)
 
-# seller = data[0]
-# buyer = data[1]
-# items = data[2:]
-
 wb = xl.load_workbook(template)
 ws = wb.active
 sheet = wb[wb.sheetnames[0]]
-# items = []
-# i=0
 
 border = Border(left=Side(border_style='thin', color='000000'),
                 right=Side(border_style='thin', color='000000'),
@@ -130,9 +124,9 @@ for i, item in enumerate(item_name):
     if len(item_igst_percent):
         igst_percent.value = item_igst_percent[i]
     if len(item_cgst_percent):
-        cgst_percent.value = ctem_igst_percent[i]
+        cgst_percent.value = item_cgst_percent[i]
     if len(item_sgst_percent):
-        sgst_percent.value = stem_igst_percent[i]
+        sgst_percent.value = item_sgst_percent[i]
     if len(item_discount_percent):
         discount_percent.value = item_discount_percent[i]
     if len(item_rate):
