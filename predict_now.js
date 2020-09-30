@@ -17,7 +17,6 @@ const obj = {
   },
 };
 
-// console.log();
 // create request.json
 jsonfile
   .writeFile(file, obj)
