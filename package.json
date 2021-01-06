@@ -22,7 +22,7 @@
   "dependencies": {
     "@google-cloud/automl": "^2.2.0",
     "@google-cloud/language": "^4.1.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "json-write": "^1.0.0",
     "jsonfile": "^6.0.1",
     "parse-json": "^5.0.1",
